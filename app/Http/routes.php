@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'CardsController@index');
+
+Route::resource('cards', 'CardsController'); //cards/というURLに対してのリクエスト
