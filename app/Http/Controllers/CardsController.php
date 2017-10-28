@@ -24,6 +24,30 @@ class CardsController extends Controller
             'cards' => $cards,
         ]);
     }
+    
+    public function search(Request $request)
+    {   
+                
+        $query = Card::query();
+        
+            if($request->fee){
+                $query->where('fee', '=', 0);
+            }
+            
+            if($request->point_rate){
+                $query->where('point_rate', '>=', 1.0);
+            }
+            
+            if($request->travel){
+                $query->where('travel', '=', "あり（クレカ払いに限らず）");
+            }
+        
+        $cards = $query->get();
+        
+        return view('cards.search', [
+            'cards' => $cards,
+        ]);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -33,9 +57,11 @@ class CardsController extends Controller
     public function create()
     {
         $card = new Card;
+        $cards = Card::all();
 
         return view('cards.create', [
             'card' => $card,
+            'cards' => $cards,
         ]);
     }
 

@@ -11,6 +11,16 @@
 |
 */
 
+
+// 検索フォームのためのルーティング
+Route::get('cards/search', 'CardsController@search')->name('cards.search');
+
 Route::get('/', 'CardsController@index');
 
 Route::resource('cards', 'CardsController'); //cards/というURLに対してのリクエスト
+
+Route::resource('charts', 'ChartsController'); //charts/というURLに対してのリクエスト
+
+Route::get('charts/chart/{id}', 'ChartsController@chart')->name('charts.chart');
+
+Route::get('charts/result/{id}', 'ChartsController@result')->name('charts.result');

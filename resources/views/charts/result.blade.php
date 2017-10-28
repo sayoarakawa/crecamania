@@ -2,23 +2,12 @@
 
 @section('content')
 
-    <div class="cover">
-        <div class="cover-inner">
-            <div class="cover-contents">
-                <h1>あなたのライフスタイルに合った<br>オススメのクレジットカードを紹介します。</h1>
-                <a href="" class="btn btn-success btn-lg">オススメのクレカ診断</a>
-            </div>
+    <center><h1>あなたにオススメのクレジットカードはこちら！</h1></center>
+    
+    <p>
+        <div class="text-center">
+            <h2>{{ $card->name }}</center></h2>
         </div>
-    </div>
-
-    <div class="text-center">
-        <h1>クレジットカード一覧</h1>
-    </div>
-
-    @if (count($cards) > 0)
-        <ul>
-            @foreach ($cards as $card)
-                <h2><center>{{ $card->name }}</center></h2>
                 <table border="1">
                     <tbody>
                         <tr>
@@ -36,9 +25,6 @@
                     </tbody>
                 </table>
                 <p><center>{{ $card->text }}</center></p>
-
-            @endforeach
-        </ul>
-    @endif
+    </p>
 
 @endsection

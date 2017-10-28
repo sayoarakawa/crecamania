@@ -46,5 +46,46 @@
     
         </div>
     </div>
+    
+    <br>
+    <br>
+    
+    <div class="text-center">
+        <h1>カードデータ一覧</h1>
+    </div>
+
+    @if (count($cards) > 0)
+        <ul>
+            @foreach ($cards as $card)
+                <h2><center>{{ $card->name }}</center></h2>
+                <table border="1">
+                    <tbody>
+                        <tr>
+                            <th>年会費</th>
+                            <td>{{ $card->fee }}円／年</td>
+                        </tr>
+                        <tr>
+                            <th>ポイント還元率</th>
+                            <td>{{ $card->point_rate }}%</td>
+                        </tr>
+                        <tr>
+                            <th>旅行損害補償</th>
+                            <td>{{ $card->travel }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><center>{{ $card->text }}</center></p>
+                
+                <div class="text-center">
+                {!! link_to_route('cards.edit', '編集', ['id' => $card->id], ['class' => 'btn btn-primary btn-m']) !!}
+                
+                {!! Form::model($card, ['route' => ['cards.destroy', $card->id], 'method' => 'delete']) !!}
+                    {!! Form::submit('削除', ['class' => 'btn btn-danger btn-m']) !!}
+                {!! Form::close() !!}
+                </div>
+
+            @endforeach
+        </ul>
+    @endif
 
 @endsection

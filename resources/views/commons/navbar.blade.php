@@ -12,9 +12,10 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">クレカ診断</a></li>
+                    <li>{!! link_to_route('charts.chart', 'クレカ診断', ['id' => 7]) !!}</li>
+                    <li>{!! link_to_route('cards.search', 'クレカ条件検索') !!}</li>
                     <li>{!! link_to_route('cards.create', 'カードデータ登録') !!}</li>
-                    <li><a href="#">チャート登録</a></li>
+                    <li>{!! link_to_route('charts.create', 'チャート登録') !!}</li>
                 </ul>
             </div>
         </div>
